@@ -13,8 +13,6 @@ public class MathChain {
         return (T) Proxy.newProxyInstance(
                 mathChain.getClassLoader(),
                 new Class[]{mathChain},
-                new MathProxyInvocationHandler(v));
+                new MathIntOperationsInvocationHandler(v));
     }
-
-
 }

@@ -7,5 +7,18 @@ public interface IntMathChain {
 
     IntMathChain multiply(int value);
 
+    IntMathChain abs();
+
+    IntMathChain increment();
+
+    IntMathChain decrement();
+
+    IntMathChain negate();
+
+    IntMathChain max(int value);
+
+    IntMathChain min(int value);
+
     int done();
+
 }
