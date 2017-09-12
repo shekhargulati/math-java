@@ -12,6 +12,10 @@ public class MathChain {
         return createProxy(LongMathOperations.class, value);
     }
 
+    public static DoubleMathOperations chain(double value) {
+        return createProxy(DoubleMathOperations.class, value);
+    }
+
     @SuppressWarnings("unchecked")
     private static <T> T createProxy(final Class<T> mathChain, int value) {
         return (T) Proxy.newProxyInstance(
@@ -26,5 +30,13 @@ public class MathChain {
                 mathChain.getClassLoader(),
                 new Class[]{mathChain},
                 new MathLongOperationsInvocationHandler(value));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T> T createProxy(final Class<T> mathChain, double value) {
+        return (T) Proxy.newProxyInstance(
+                mathChain.getClassLoader(),
+                new Class[]{mathChain},
+                new MathDoubleOperationsInvocationHandler(value));
     }
 }
