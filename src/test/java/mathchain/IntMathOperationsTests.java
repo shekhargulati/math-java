@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class IntMathChainTests {
+public class IntMathOperationsTests {
 
     @Test
     public void shouldChainAddAndSubtractOperationOnIntegers() throws Exception {

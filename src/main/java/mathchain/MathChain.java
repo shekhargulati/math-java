@@ -4,15 +4,27 @@ import java.lang.reflect.Proxy;
 
 public class MathChain {
 
-    public static IntMathChain chain(int value) {
-        return create(IntMathChain.class, value);
+    public static IntMathOperations chain(int value) {
+        return createProxy(IntMathOperations.class, value);
+    }
+
+    public static LongMathOperations chain(long value) {
+        return createProxy(LongMathOperations.class, value);
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T create(final Class<T> mathChain, int v) {
+    private static <T> T createProxy(final Class<T> mathChain, int value) {
         return (T) Proxy.newProxyInstance(
                 mathChain.getClassLoader(),
                 new Class[]{mathChain},
-                new MathIntOperationsInvocationHandler(v));
+                new MathIntOperationsInvocationHandler(value));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T> T createProxy(final Class<T> mathChain, long value) {
+        return (T) Proxy.newProxyInstance(
+                mathChain.getClassLoader(),
+                new Class[]{mathChain},
+                new MathLongOperationsInvocationHandler(value));
     }
 }
